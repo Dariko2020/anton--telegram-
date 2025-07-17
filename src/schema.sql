@@ -1,0 +1,25 @@
+-- Users table
+CREATE TABLE IF NOT EXISTS users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  telegram_id INTEGER UNIQUE,
+  balance REAL DEFAULT 0,
+  wallet TEXT,
+  is_admin INTEGER DEFAULT 0
+);
+
+-- Payments table
+CREATE TABLE IF NOT EXISTS payments (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER,
+  amount REAL,
+  confirmed INTEGER DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Search logs
+CREATE TABLE IF NOT EXISTS searches (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER,
+  query TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
